@@ -1,1 +1,2 @@
-TEST_OBJ = testMain.o YenTest.o DollarTest.o ExchangerTest.o 
+TEST_OBJ = testMain.o YenTest.o DollarTest.o ExchangerTest.o \
+ExchangeRateTest.o ExchangeRateUpdaterTest.o 
