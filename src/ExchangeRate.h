@@ -8,6 +8,8 @@
 #define EXCHANGERATE_H_
 
 // インクルードファイル ================================
+#include <string>
+#include <decimal_for_cpp/decimal.h>
 
 // クラスの前方宣言 ====================================
 
@@ -25,13 +27,17 @@
 --------------------------------------------------*/
 class ExchangeRate {
  public:
-  //! Constructor
-  ExchangeRate();
-  //! Destructor
-  virtual ~ExchangeRate();
+    //! Constructor
+    explicit ExchangeRate( std::string initialRate );
+    //! Destructor
+    virtual ~ExchangeRate();
+
+    dec::decimal2 value();
 
  protected:
  private:
+    dec::decimal4 rate;
+    ExchangeRate();
 };
 
 #endif  // EXCHANGERATE_H_

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "ExchangeRateTest.h"
 
-ExchangeRateTest::ExchangeRateTest() : sut(NULL){
+ExchangeRateTest::ExchangeRateTest() : sut(nullptr){
 
 }
 
@@ -10,14 +10,13 @@ ExchangeRateTest::~ExchangeRateTest() {
 }
 
 void ExchangeRateTest::SetUp() {
-	sut = new ExchangeRate();
 }
 
 void ExchangeRateTest::TearDown() {
-	delete sut;
+    delete sut;
 }
 
-TEST_F (ExchangeRateTest, testNameIsHere_ChangeThis) {
-/* Write a test code here. */
-
+TEST_F (ExchangeRateTest, testCreateExchangeRate) {
+    sut = new ExchangeRate("130.12");
+    EXPECT_EQ(sut->value(), 130.12);
 }

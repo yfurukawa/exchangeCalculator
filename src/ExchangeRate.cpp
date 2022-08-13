@@ -14,6 +14,9 @@
 ExchangeRate::ExchangeRate() {
 }
 
+ExchangeRate::ExchangeRate( std::string initialRate ) : rate ( initialRate) {
+}
+
 /*!------------------------------------------------
 @brief      デフォルトデストラクタ
 @note       クラスを破棄する
@@ -30,3 +33,6 @@ ExchangeRate::~ExchangeRate() {
 @return     なし
 @attention  なし
 --------------------------------------------------*/
+dec::decimal2 ExchangeRate::value() {
+    return dec::decimal_cast<2>( rate );
+}
