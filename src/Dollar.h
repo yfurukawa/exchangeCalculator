@@ -8,6 +8,8 @@
 #define DOLLAR_H_
 
 // インクルードファイル ================================
+#include <string>
+#include "decimal_for_cpp/decimal.h"
 
 // クラスの前方宣言 ====================================
 
@@ -26,16 +28,15 @@
 class Dollar {
  public:
   //! Constructor
-  explicit Dollar( const float amount );
-  float value();
+  explicit Dollar( const std::string initoalAmount );
+  dec::decimal2 value();
 
   //! Destructor
   virtual ~Dollar();
 
  protected:
  private:
-    int dollar;
-    int cent;
+    dec::decimal4 amount;
     Dollar();
 };
 

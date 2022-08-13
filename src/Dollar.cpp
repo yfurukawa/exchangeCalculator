@@ -11,12 +11,10 @@
 @note       クラスを構築する
 @attention  なし
 --------------------------------------------------*/
-Dollar::Dollar() : dollar(0), cent(0) {
+Dollar::Dollar() : amount( 0 ) {
 }
 
-Dollar::Dollar( const float amount ) : dollar(0), cent(0) {
-    dollar = amount;
-    cent = (amount - dollar) * 100;
+Dollar::Dollar( const std::string initoalAmount ) : amount( initoalAmount ) {
 }
 /*!------------------------------------------------
 @brief      デフォルトデストラクタ
@@ -34,6 +32,6 @@ Dollar::~Dollar() {
 @return     なし
 @attention  なし
 --------------------------------------------------*/
-float Dollar::value() {
-    return dollar + (float)cent / 100;
+dec::decimal2 Dollar::value() {
+    return dec::decimal_cast<2>(amount);
 }

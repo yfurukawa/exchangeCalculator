@@ -20,5 +20,12 @@ void DollarTest::TearDown()
 
 TEST_F(DollarTest, testCreateDollarInstance_DollarOnly)
 {
-    sut = new Dollar(100);
+    sut = new Dollar("100");
+    EXPECT_EQ(sut->value(), 100);
+}
+
+TEST_F(DollarTest, testCreateDollarInstance_DollarWithCents)
+{
+    sut = new Dollar("100.01");
+    EXPECT_EQ(sut->value(), 100.01);
 }
