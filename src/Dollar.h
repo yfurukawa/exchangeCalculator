@@ -9,7 +9,7 @@
 
 // インクルードファイル ================================
 #include <string>
-#include "decimal_for_cpp/decimal.h"
+#include <decimal_for_cpp/decimal.h>
 
 // クラスの前方宣言 ====================================
 
@@ -27,16 +27,16 @@
 --------------------------------------------------*/
 class Dollar {
  public:
-  //! Constructor
-  explicit Dollar( const std::string initoalAmount );
-  dec::decimal2 value();
+    //! Constructor
+    explicit Dollar( const std::string initoalAmount );
+    //! Destructor
+    virtual ~Dollar();
 
-  //! Destructor
-  virtual ~Dollar();
+    dec::decimal2 value();
 
  protected:
  private:
-    dec::decimal4 amount;
+    const dec::decimal4 amount;
     Dollar();
 };
 
