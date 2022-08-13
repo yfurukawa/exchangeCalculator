@@ -28,7 +28,7 @@
 class Dollar {
  public:
     //! Constructor
-    explicit Dollar( const std::string initoalAmount );
+    explicit Dollar( const std::string initialAmount );
     //! Destructor
     virtual ~Dollar();
 

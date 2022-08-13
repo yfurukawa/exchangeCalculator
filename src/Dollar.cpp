@@ -14,7 +14,10 @@
 Dollar::Dollar() : amount( 0 ) {
 }
 
-Dollar::Dollar( const std::string initoalAmount ) : amount( initoalAmount ) {
+Dollar::Dollar( const std::string initialAmount ) : amount( initialAmount ) {
+    if( amount < 0 ) {
+        throw std::out_of_range("initialAoumt must be positive value.");
+    }
 }
 /*!------------------------------------------------
 @brief      デフォルトデストラクタ
