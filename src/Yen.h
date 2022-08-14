@@ -8,6 +8,7 @@
 #define YEN_H_
 
 // インクルードファイル ================================
+#include "Currency.h"
 
 // クラスの前方宣言 ====================================
 
@@ -23,15 +24,18 @@
 @attention  なし
 @see        なし
 --------------------------------------------------*/
-class Yen {
+class Yen : public Currency {
  public:
-  //! Constructor
-  Yen();
-  //! Destructor
-  virtual ~Yen();
+    //! Constructor
+    explicit Yen( const std::string initialAmount );
+    //! Destructor
+    virtual ~Yen();
+
+    virtual Currency* exchange( ExchangeRate& rate );
 
  protected:
  private:
+    Yen();
 };
 
 #endif  // YEN_H_
