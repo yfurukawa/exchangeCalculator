@@ -20,6 +20,7 @@ Dollar::Dollar( const std::string initialAmount ) : Currency( initialAmount ) {
         throw std::invalid_argument("initialAoumt must be positive value.");
     }
 }
+
 /*!------------------------------------------------
 @brief      デフォルトデストラクタ
 @note       クラスを破棄する
@@ -36,11 +37,3 @@ Dollar::~Dollar() {
 @return     なし
 @attention  なし
 --------------------------------------------------*/
-// dec::decimal2 Dollar::value() {
-//     return dec::decimal_cast<2>(amount);
-// }
-
-Currency* Dollar::exchange( ExchangeRate& rate ) {
-    dec::decimal4 result = amount * rate.value();
-    return dynamic_cast<Currency*>(new Dollar( dec::toString( result ) ));
-}

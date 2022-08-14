@@ -31,8 +31,6 @@ class Yen : public Currency {
     //! Destructor
     virtual ~Yen();
 
-    virtual Currency* exchange( ExchangeRate& rate );
-
  protected:
  private:
     Yen();

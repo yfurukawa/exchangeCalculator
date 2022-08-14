@@ -31,8 +31,6 @@ class Dollar : public Currency {
     //! Destructor
     virtual ~Dollar();
 
-    virtual Currency* exchange( ExchangeRate& rate );
-
  protected:
  private:
     Dollar();
