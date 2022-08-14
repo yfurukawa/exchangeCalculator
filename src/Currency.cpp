@@ -14,6 +14,9 @@
 Currency::Currency() {
 }
 
+Currency::Currency( const std::string initialAmount ) : amount( initialAmount ) {
+}
+
 /*!------------------------------------------------
 @brief      デフォルトデストラクタ
 @note       クラスを破棄する
@@ -30,3 +33,6 @@ Currency::~Currency() {
 @return     なし
 @attention  なし
 --------------------------------------------------*/
+dec::decimal2 Currency::value() {
+    return dec::decimal_cast<2>(amount);
+}

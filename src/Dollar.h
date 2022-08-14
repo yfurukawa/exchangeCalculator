@@ -8,13 +8,11 @@
 #define DOLLAR_H_
 
 // インクルードファイル ================================
-#include <string>
-#include <decimal_for_cpp/decimal.h>
+#include "Currency.h"
 
 // クラスの前方宣言 ====================================
 
 // マクロの宣言 ========================================
-class ExchangeRate;
 
 // 型の宣言 ============================================
 
@@ -26,19 +24,17 @@ class ExchangeRate;
 @attention  なし
 @see        なし
 --------------------------------------------------*/
-class Dollar {
+class Dollar : public Currency {
  public:
     //! Constructor
     explicit Dollar( const std::string initialAmount );
     //! Destructor
     virtual ~Dollar();
 
-    dec::decimal2 value();
-    Dollar* exchange( ExchangeRate& rate );
+    virtual Currency* exchange( ExchangeRate& rate );
 
  protected:
  private:
-    const dec::decimal4 amount;
     Dollar();
 };
 

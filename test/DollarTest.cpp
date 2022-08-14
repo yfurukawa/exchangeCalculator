@@ -62,6 +62,6 @@ TEST_F(DollarTest, testMultiple)
 {
     sut = new Dollar("100.01");
     ExchangeRate rate("130.52");
-    Dollar* result = sut->exchange( rate );
+    Currency* result = sut->exchange( rate );
     EXPECT_EQ(result->value(), 13053.31);
 }
