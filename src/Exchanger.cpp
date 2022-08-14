@@ -40,7 +40,7 @@ int Exchanger::exchange( std::string initialAmount ) {
         std::cout << exchangedCurrency->value() << std::endl;
         return 0;
     }
-    catch( const std::out_of_range& e) {
+    catch( const std::invalid_argument& e) {
         std::cerr << e.what() <<  std::endl;
         exit(1);
     }

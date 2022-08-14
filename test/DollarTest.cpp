@@ -34,7 +34,7 @@ TEST_F(DollarTest, testCreateDollarInstance_DollarWithCents)
 
 TEST_F(DollarTest, testCreateDollarInstance_WithMinusValue_throwException)
 {
-    EXPECT_THROW( new Dollar("-100.01"), std::out_of_range );
+    EXPECT_THROW( new Dollar("-100.01"), std::invalid_argument );
 }
 
 TEST_F(DollarTest, testCreateDollarInstance_WithMinusValue_exceptionMessage)
@@ -42,7 +42,7 @@ TEST_F(DollarTest, testCreateDollarInstance_WithMinusValue_exceptionMessage)
     try {
         sut = new Dollar("-100.01");
     }
-    catch( const std::out_of_range& e ) {
+    catch( const std::invalid_argument& e ) {
         std::string exceptionMessage( e.what() );
         EXPECT_EQ( exceptionMessage, "initialAoumt must be positive value.");
     }

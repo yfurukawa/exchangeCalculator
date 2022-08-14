@@ -17,7 +17,7 @@ Dollar::Dollar() : Currency( 0 ) {
 
 Dollar::Dollar( const std::string initialAmount ) : Currency( initialAmount ) {
     if( amount < 0 ) {
-        throw std::out_of_range("initialAoumt must be positive value.");
+        throw std::invalid_argument("initialAoumt must be positive value.");
     }
 }
 /*!------------------------------------------------
