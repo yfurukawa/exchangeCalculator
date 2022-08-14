@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdexcept>
 #include "DollarTest.h"
+#include "../src/ExchangeRate.h"
 
 DollarTest::DollarTest() : sut(NULL)
 {
@@ -55,4 +56,12 @@ TEST_F(DollarTest, testCreateDollarInstance_WithZero_noThrowException)
 TEST_F(DollarTest, testCreateDollarInstance_WithMinusZero_noThrowException)
 {
     EXPECT_NO_THROW( new Dollar("-0.00") );
+}
+
+TEST_F(DollarTest, testMultiple)
+{
+    sut = new Dollar("100.01");
+    ExchangeRate rate("130.52");
+    Dollar* result = sut->exchange( rate );
+    EXPECT_EQ(result->value(), 13053.31);
 }

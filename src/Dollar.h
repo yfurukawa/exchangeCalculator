@@ -14,6 +14,7 @@
 // クラスの前方宣言 ====================================
 
 // マクロの宣言 ========================================
+class ExchangeRate;
 
 // 型の宣言 ============================================
 
@@ -33,6 +34,7 @@ class Dollar {
     virtual ~Dollar();
 
     dec::decimal2 value();
+    Dollar* exchange( ExchangeRate& rate );
 
  protected:
  private:

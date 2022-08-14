@@ -5,6 +5,7 @@
 --------------------------------------------------*/
 #include <stdexcept>
 #include "Dollar.h"
+#include "ExchangeRate.h"
 
 /*!------------------------------------------------
 @brief      デフォルトコンストラクタ
@@ -37,4 +38,9 @@ Dollar::~Dollar() {
 --------------------------------------------------*/
 dec::decimal2 Dollar::value() {
     return dec::decimal_cast<2>(amount);
+}
+
+Dollar* Dollar::exchange( ExchangeRate& rate ) {
+    dec::decimal4 result = amount * rate.value();
+    return new Dollar( dec::toString( result ) );
 }
