@@ -8,8 +8,12 @@
 #define EXCHANGER_H_
 
 // インクルードファイル ================================
+#include <iostream>
+#include <string>
 
 // クラスの前方宣言 ====================================
+class Dollar;
+class ExchangeRate;
 
 // マクロの宣言 ========================================
 
@@ -25,13 +29,16 @@
 --------------------------------------------------*/
 class Exchanger {
  public:
-  //! Constructor
-  Exchanger();
-  //! Destructor
-  virtual ~Exchanger();
+    //! Constructor
+    Exchanger();
+    //! Destructor
+    virtual ~Exchanger();
+
+    int exchange( std::string initialAmount );
 
  protected:
  private:
+    Dollar* srcCurrency;
 };
 
 #endif  // EXCHANGER_H_
