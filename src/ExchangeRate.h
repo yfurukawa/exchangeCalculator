@@ -32,11 +32,11 @@ class ExchangeRate {
     //! Destructor
     virtual ~ExchangeRate();
 
-    dec::decimal2 value();
+    dec::decimal6 value();
 
  protected:
  private:
-    dec::decimal4 rate;
+    dec::decimal6 rate;
     ExchangeRate();
 };
 

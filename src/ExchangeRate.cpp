@@ -33,6 +33,6 @@ ExchangeRate::~ExchangeRate() {
 @return     なし
 @attention  なし
 --------------------------------------------------*/
-dec::decimal2 ExchangeRate::value() {
-    return dec::decimal_cast<2>( rate );
+dec::decimal6 ExchangeRate::value() {
+    return rate;
 }
