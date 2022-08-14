@@ -5,6 +5,7 @@
 --------------------------------------------------*/
 
 #include "Currency.h"
+#include "ExchangeRate.h"
 
 /*!------------------------------------------------
 @brief      デフォルトコンストラクタ
@@ -35,4 +36,9 @@ Currency::~Currency() {
 --------------------------------------------------*/
 dec::decimal2 Currency::value() {
     return dec::decimal_cast<2>(amount);
+}
+
+Currency* Currency::exchange( ExchangeRate& rate ) {
+    dec::decimal4 result = amount * rate.value();
+    return new Currency( dec::toString( result ) );
 }
