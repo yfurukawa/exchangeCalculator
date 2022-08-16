@@ -38,10 +38,14 @@ dec::decimal2 Currency::value() {
     return dec::decimal_cast<2>(amount_);
 }
 
-Currency* Currency::exchange( ExchangeRate* rate ) {
+Currency* Currency::exchange( Currency* const dstCurrency, ExchangeRate* rate ) {
     dec::decimal4 result = amount_ * rate->value();
     if( result < 1 ) {
         throw std::out_of_range("Exchanged currency is less than 1, due to initialAmount is too small.");
     }
-    return new Currency( dec::toString( result ), "" );
+    return new Currency( dec::toString( result ), dstCurrency->currencyName() );
+}
+
+std::string Currency::currencyName() {
+    return currencyName_;
 }

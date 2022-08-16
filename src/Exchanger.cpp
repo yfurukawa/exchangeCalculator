@@ -8,6 +8,7 @@
 #include "Dollar.h"
 #include "ExchangeRate.h"
 #include "ExchangeRateUpdater.h"
+#include "Yen.h"
 
 /*!------------------------------------------------
 @brief      デフォルトコンストラクタ
@@ -38,12 +39,15 @@ Exchanger::~Exchanger() {
 --------------------------------------------------*/
 int Exchanger::exchange( std::string initialAmount ) {
     try {
-        srcCurrency_ = new Dollar( initialAmount);
+        srcCurrency_ = new Dollar( initialAmount );
+        dstCurrency_ = new Yen( "0" ); // TODO生成の要否を検討
         ExchangeRate* rate = updater_->provideExchangeRate( srcCurrency_, dstCurrency_ );
-        Currency* exchangedCurrency = srcCurrency_->exchange( rate );
-        std::cout << exchangedCurrency->value() << std::endl;
+        Currency* exchangedCurrency = srcCurrency_->exchange( dstCurrency_, rate );
+        std::cout << "Exchanged currency is " << exchangedCurrency->value() << exchangedCurrency->currencyName() << std::endl;
         delete exchangedCurrency;
         delete rate;
+        delete srcCurrency_;
+        delete dstCurrency_;
         return 0;
     }
     catch( const std::invalid_argument& e) {
