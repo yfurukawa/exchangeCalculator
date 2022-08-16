@@ -13,16 +13,16 @@
 @note       クラスを構築する
 @attention  なし
 --------------------------------------------------*/
-Yen::Yen() : Currency(0) {
+Yen::Yen() : Currency( 0, "" ) {
 }
 
-Yen::Yen( const std::string initialAmount) : Currency( initialAmount) {
-    if( amount < 0 ) {
+Yen::Yen( const std::string initialAmount) : Currency( initialAmount, "Yen" )  {
+    if( amount_ < 0 ) {
         throw std::invalid_argument("initialAoumt must be positive value.");
     }
 
     // 変換元の値に銭の位が含まれていた場合は、異常値なので例外扱いとする
-    if( (amount - amount.trunc()) > 0 ) {
+    if( (amount_ - amount_.trunc()) > 0 ) {
         throw std::invalid_argument("initialAmount must be an integer.");
     }
 }

@@ -15,7 +15,7 @@
 Currency::Currency() {
 }
 
-Currency::Currency( const std::string initialAmount ) : amount( initialAmount ) {
+Currency::Currency( const std::string initialAmount, std::string currencyName ) : amount_( initialAmount ), currencyName_( currencyName ) {
 }
 
 /*!------------------------------------------------
@@ -35,13 +35,13 @@ Currency::~Currency() {
 @attention  なし
 --------------------------------------------------*/
 dec::decimal2 Currency::value() {
-    return dec::decimal_cast<2>(amount);
+    return dec::decimal_cast<2>(amount_);
 }
 
 Currency* Currency::exchange( ExchangeRate* rate ) {
-    dec::decimal4 result = amount * rate->value();
+    dec::decimal4 result = amount_ * rate->value();
     if( result < 1 ) {
         throw std::out_of_range("Exchanged currency is less than 1, due to initialAmount is too small.");
     }
-    return new Currency( dec::toString( result ) );
+    return new Currency( dec::toString( result ), "" );
 }

@@ -29,7 +29,7 @@ class ExchangeRate;
 class Currency {
  public:
     //! Constructor
-    explicit Currency( const std::string initialAmount );
+    explicit Currency( const std::string initialAmount, const std::string currencyName );
     //! Destructor
     virtual ~Currency();
 
@@ -37,9 +37,10 @@ class Currency {
     virtual Currency* exchange( ExchangeRate* rate );
 
  protected:
-    const dec::decimal4 amount;
+    const dec::decimal4 amount_;
     Currency();
  private:
+    const std::string currencyName_;
  
 };
 
