@@ -3,8 +3,8 @@
 @brief      
 @attention  なし
 --------------------------------------------------*/
-
 #include "ExchangeRateUpdater.h"
+#include "ExchangeRate.h"
 
 /*!------------------------------------------------
 @brief      デフォルトコンストラクタ
@@ -30,3 +30,7 @@ ExchangeRateUpdater::~ExchangeRateUpdater() {
 @return     なし
 @attention  なし
 --------------------------------------------------*/
+ExchangeRate* ExchangeRateUpdater::provideExchangeRate( const Currency* from, const Currency* to ) {
+    ExchangeRate* rate = new ExchangeRate( "130.52" ); // 本当は、何処からか為替レートを拾ってくる
+    return rate;
+}

@@ -10,6 +10,8 @@
 // インクルードファイル ================================
 
 // クラスの前方宣言 ====================================
+class Currency;
+class ExchangeRate;
 
 // マクロの宣言 ========================================
 
@@ -25,10 +27,12 @@
 --------------------------------------------------*/
 class ExchangeRateUpdater {
  public:
-  //! Constructor
-  ExchangeRateUpdater();
-  //! Destructor
-  virtual ~ExchangeRateUpdater();
+    //! Constructor
+    ExchangeRateUpdater();
+    //! Destructor
+    virtual ~ExchangeRateUpdater();
+
+    ExchangeRate* provideExchangeRate( const Currency* from, const Currency* to );
 
  protected:
  private:

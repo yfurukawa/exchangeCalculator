@@ -12,7 +12,7 @@
 #include <string>
 
 // クラスの前方宣言 ====================================
-class Dollar;
+class Currency;
 class ExchangeRate;
 class ExchangeRateUpdater;
 
@@ -31,7 +31,7 @@ class ExchangeRateUpdater;
 class Exchanger {
  public:
     //! Constructor
-    Exchanger( const ExchangeRateUpdater* const updater );
+    Exchanger( ExchangeRateUpdater* const updater );
     //! Destructor
     virtual ~Exchanger();
 
@@ -39,8 +39,9 @@ class Exchanger {
 
  protected:
  private:
-    Dollar* srcCurrency_;
-    const ExchangeRateUpdater* const updater_;
+    Currency* srcCurrency_;
+    Currency* dstCurrency_;
+    ExchangeRateUpdater* const updater_;
 
     Exchanger();
 };

@@ -34,7 +34,7 @@ class Currency {
     virtual ~Currency();
 
     dec::decimal2 value();
-    virtual Currency* exchange( ExchangeRate& rate );
+    virtual Currency* exchange( ExchangeRate* rate );
 
  protected:
     const dec::decimal4 amount;
