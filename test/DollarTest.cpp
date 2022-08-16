@@ -61,7 +61,8 @@ TEST_F(DollarTest, testCreateDollarInstance_WithMinusZero_noThrowException)
 TEST_F(DollarTest, testMultiple)
 {
     sut = new Dollar("100.01");
-    ExchangeRate rate("130.52");
+    ExchangeRate* rate = new ExchangeRate("130.52");
     Currency* result = sut->exchange( rate );
     EXPECT_EQ(result->value(), 13053.31);
+    delete rate;
 }

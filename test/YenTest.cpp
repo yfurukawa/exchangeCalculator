@@ -63,13 +63,15 @@ TEST_F(YenTest, testCreateYenInstance_WithMinusZero_noThrowException)
 TEST_F(YenTest, testMultiple_ThrowException)
 {
     sut = new Yen("100");
-    ExchangeRate rate("0.007662");
+    ExchangeRate* rate = new ExchangeRate("0.007662");
     EXPECT_THROW(sut->exchange( rate ), std::out_of_range);
+    delete rate;
 }
 
 TEST_F(YenTest, testMultiple_NoThrowException) {
     sut = new Yen("900");
-    ExchangeRate rate("0.007662");
+    ExchangeRate* rate = new ExchangeRate("0.007662");
     Currency* result = sut->exchange( rate );
     EXPECT_EQ(result->value(), 6.90);
+    delete rate;
 }
