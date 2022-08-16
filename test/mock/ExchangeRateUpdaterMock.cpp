@@ -1,22 +1,17 @@
 /*!------------------------------------------------
-@file       Exchanger.h
+@file       ExchangeRateUpdaterMock.h
 @brief      
 @attention  なし
 --------------------------------------------------*/
 
-#include "Exchanger.h"
-#include "Dollar.h"
-#include "ExchangeRate.h"
+#include "ExchangeRateUpdaterMock.h"
 
 /*!------------------------------------------------
 @brief      デフォルトコンストラクタ
 @note       クラスを構築する
 @attention  なし
 --------------------------------------------------*/
-Exchanger::Exchanger() : srcCurrency_( nullptr ), updater_( nullptr ) {
-}
-
-Exchanger::Exchanger( const ExchangeRateUpdater* const updater ) : srcCurrency_( nullptr ), updater_( updater ) {
+ExchangeRateUpdaterMock::ExchangeRateUpdaterMock() {
 }
 
 /*!------------------------------------------------
@@ -24,7 +19,7 @@ Exchanger::Exchanger( const ExchangeRateUpdater* const updater ) : srcCurrency_(
 @note       クラスを破棄する
 @attention  なし
 --------------------------------------------------*/
-Exchanger::~Exchanger() {
+ExchangeRateUpdaterMock::~ExchangeRateUpdaterMock() {
 }
 
 /*!------------------------------------------------
@@ -35,18 +30,3 @@ Exchanger::~Exchanger() {
 @return     なし
 @attention  なし
 --------------------------------------------------*/
-int Exchanger::exchange( std::string initialAmount ) {
-    try {
-        srcCurrency_ = new Dollar( initialAmount);
-        ExchangeRate rate( "130.52"); // 本当は、何処からか為替レートを拾ってくる
-        Currency* exchangedCurrency = srcCurrency_->exchange( rate );
-        std::cout << exchangedCurrency->value() << std::endl;
-        return 0;
-    }
-    catch( const std::invalid_argument& e) {
-        std::cerr << e.what() <<  std::endl;
-        exit(1);
-    }
-
-
-} 

@@ -1,20 +1,16 @@
 /*!------------------------------------------------
-@file       Exchanger.h
+@file       ExchangeRateUpdaterMock.h
 @brief      
 @attention  なし
 --------------------------------------------------*/
 
-#ifndef EXCHANGER_H_
-#define EXCHANGER_H_
+#ifndef EXCHANGERATEUPDATERMOCK_H_
+#define EXCHANGERATEUPDATERMOCK_H_
 
 // インクルードファイル ================================
-#include <iostream>
-#include <string>
+#include "../../src/ExchangeRateUpdater.h"
 
 // クラスの前方宣言 ====================================
-class Dollar;
-class ExchangeRate;
-class ExchangeRateUpdater;
 
 // マクロの宣言 ========================================
 
@@ -22,27 +18,21 @@ class ExchangeRateUpdater;
 
 // クラス定義 ==========================================
 /*!--------------------------------------------------
-@class       Exchanger.h
+@class       ExchangeRateUpdaterMock.h
 @brief      
 @note       
 @attention  なし
 @see        なし
 --------------------------------------------------*/
-class Exchanger {
+class ExchangeRateUpdaterMock : public ExchangeRateUpdater {
  public:
-    //! Constructor
-    Exchanger( const ExchangeRateUpdater* const updater );
-    //! Destructor
-    virtual ~Exchanger();
-
-    int exchange( std::string initialAmount );
+  //! Constructor
+  ExchangeRateUpdaterMock();
+  //! Destructor
+  virtual ~ExchangeRateUpdaterMock();
 
  protected:
  private:
-    Dollar* srcCurrency_;
-    const ExchangeRateUpdater* const updater_;
-
-    Exchanger();
 };
 
-#endif  // EXCHANGER_H_
+#endif  // EXCHANGERATEUPDATERMOCK_H_
