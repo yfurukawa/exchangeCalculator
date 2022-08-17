@@ -3,7 +3,6 @@
 @brief      
 @attention  なし
 --------------------------------------------------*/
-#include <iostream>
 #include <stdexcept>
 #include "Dollar.h"
 #include "ExchangeRate.h"
