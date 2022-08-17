@@ -62,7 +62,14 @@ TEST_F(DollarTest, testMultiple)
 {
     sut = new Dollar("100.01");
     ExchangeRate* rate = new ExchangeRate("130.52");
-    Currency* result = sut->exchange( rate );
+    Currency* dstCurrency = new Dollar( "0" );
+    Currency* result = sut->exchange( dstCurrency, rate );
     EXPECT_EQ(result->value(), 13053.31);
+    delete dstCurrency;
     delete rate;
+}
+
+TEST_F(DollarTest, testNull)
+{
+    EXPECT_THROW( new Dollar( nullptr ), std::logic_error );
 }
