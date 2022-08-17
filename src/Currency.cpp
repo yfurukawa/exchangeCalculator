@@ -3,7 +3,7 @@
 @brief      
 @attention  なし
 --------------------------------------------------*/
-
+#include <iostream>
 #include "Currency.h"
 #include "ExchangeRate.h"
 
@@ -16,6 +16,13 @@ Currency::Currency() {
 }
 
 Currency::Currency( const std::string initialAmount, std::string currencyName ) : amount_( initialAmount ), currencyName_( currencyName ) {
+    std::cout << "Currency Constructed" << std::endl;
+    if( initialAmount == "" ) {
+        throw std::invalid_argument("initialAoumt must be positive value.");
+    }
+    if( amount_ < 0 ) {
+        throw std::invalid_argument("initialAoumt must be positive value.");
+    }
 }
 
 /*!------------------------------------------------
