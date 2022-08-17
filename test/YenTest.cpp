@@ -79,3 +79,8 @@ TEST_F(YenTest, testMultiple_NoThrowException) {
     delete dstCurrency;
     delete rate;
 }
+
+TEST_F(YenTest, testNull)
+{
+    EXPECT_THROW( new Yen( nullptr ), std::logic_error );
+}
