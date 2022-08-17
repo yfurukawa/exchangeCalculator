@@ -84,3 +84,8 @@ TEST_F(YenTest, testNull)
 {
     EXPECT_THROW( new Yen( nullptr ), std::logic_error );
 }
+
+TEST_F(YenTest, testNullEmptyString)
+{
+    EXPECT_THROW( new Yen( "" ), std::invalid_argument );
+}

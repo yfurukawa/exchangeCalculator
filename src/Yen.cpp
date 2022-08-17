@@ -17,6 +17,10 @@ Yen::Yen() : Currency( 0, "" ) {
 }
 
 Yen::Yen( const std::string initialAmount) : Currency( initialAmount, "Yen" )  {
+    if( initialAmount == "" ) {
+        throw std::invalid_argument("initialAoumt must be positive value.");
+    }
+    
     if( amount_ < 0 ) {
         throw std::invalid_argument("initialAoumt must be positive value.");
     }
