@@ -73,3 +73,8 @@ TEST_F(DollarTest, testNull)
 {
     EXPECT_THROW( new Dollar( nullptr ), std::logic_error );
 }
+
+TEST_F(DollarTest, testEmpty)
+{
+    EXPECT_THROW( new Dollar(""), std::invalid_argument );
+}
