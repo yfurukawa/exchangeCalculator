@@ -16,10 +16,13 @@ Currency::Currency() {
 
 Currency::Currency( const std::string initialAmount, std::string currencyName ) : amount_( initialAmount ), currencyName_( currencyName ) {
     if( initialAmount == "" ) {
-        throw std::invalid_argument("initialAoumt must be positive value.");
+        throw std::invalid_argument( "initialAoumt must be positive value." );
+    }
+    if( initialAmount.find(",") != std::string::npos ) {
+        throw std::invalid_argument( "initialAmount must not include comma." );
     }
     if( amount_ < 0 ) {
-        throw std::invalid_argument("initialAoumt must be positive value.");
+        throw std::invalid_argument( "initialAoumt must be positive value." );
     }
 }
 

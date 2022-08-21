@@ -84,12 +84,23 @@ TEST_F(DollarTest, testCreateDollarInstance_withComma)
     EXPECT_THROW( new Dollar("1,000.01"), std::invalid_argument );
 }
 
+TEST_F(DollarTest, testCreateDollarInstance_withComma_exceptionMessage)
+{
+    try {
+        sut = new Dollar("1,000.01");
+    }
+    catch( const std::invalid_argument& e ) {
+        std::string exceptionMessage( e.what() );
+        EXPECT_EQ( exceptionMessage, "initialAmount must not include comma.");
+    }
+}
+
 TEST_F(DollarTest, testCreateDollarInstance_BigValue_ThorowException)
 {
     EXPECT_THROW( new Dollar("1000000000000.01"), std::out_of_range );
 }
 
-TEST_F(DollarTest, testCreateDollarInstance_BigValue__exceptionMessage)
+TEST_F(DollarTest, testCreateDollarInstance_BigValue_exceptionMessage)
 {
     try {
         sut = new Dollar("1000000000000.01");
