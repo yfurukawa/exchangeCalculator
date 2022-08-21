@@ -4,6 +4,7 @@
 @attention  なし
 --------------------------------------------------*/
 #include <stdexcept>
+#include <iostream>
 #include "Dollar.h"
 #include "ExchangeRate.h"
 
@@ -16,7 +17,10 @@ Dollar::Dollar() : Currency( 0, "" ) {
 }
 
 Dollar::Dollar( const std::string initialAmount ) : Currency( initialAmount, "Dollar" ) {
-    if( amount_ > 999999999999.99 ) {
+    if( initialAmount.length() > 15 ) {
+        throw std::out_of_range("initialAoumt must be less than 1,000,000,000,000.");
+    }
+    if( (initialAmount.find( '.' ) != std::string::npos) && initialAmount.find( '.' ) >= 13 ) {
         throw std::out_of_range("initialAoumt must be less than 1,000,000,000,000.");
     }
 }

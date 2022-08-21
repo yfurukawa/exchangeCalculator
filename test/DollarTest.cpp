@@ -92,13 +92,13 @@ TEST_F(DollarTest, testCreateDollarInstance_withComma_exceptionMessage)
 
 TEST_F(DollarTest, testCreateDollarInstance_BigValue_ThorowException)
 {
-    EXPECT_THROW( new Dollar("1000000000000.01"), std::out_of_range );
+    EXPECT_THROW( new Dollar("1000000000000.1"), std::out_of_range );
 }
 
 TEST_F(DollarTest, testCreateDollarInstance_BigValue_exceptionMessage)
 {
     try {
-        sut = new Dollar("1000000000000.01");
+        sut = new Dollar("1000000000000.1");
     }
     catch( const std::out_of_range& e ) {
         std::string exceptionMessage( e.what() );
@@ -109,4 +109,10 @@ TEST_F(DollarTest, testCreateDollarInstance_BigValue_exceptionMessage)
 TEST_F(DollarTest, testCreateDollarInstance_withInvalidCharacter_throwException)
 {
     EXPECT_THROW( new Dollar("$1000.01"), std::invalid_argument );
+}
+
+TEST_F(DollarTest, testLongstring_throwException)
+{
+    std::string str(100, 'a');
+    EXPECT_THROW( new Dollar( str ), std::invalid_argument );
 }
