@@ -53,16 +53,11 @@ TEST_F(DollarTest, testCreateDollarInstance_WithZero_noThrowException)
     EXPECT_NO_THROW( new Dollar("0.00") );
 }
 
-TEST_F(DollarTest, testCreateDollarInstance_WithMinusZero_noThrowException)
-{
-    EXPECT_NO_THROW( new Dollar("-0.00") );
-}
-
-TEST_F(DollarTest, testMultiple)
+TEST_F(DollarTest, testExchange)
 {
     sut = new Dollar("100.01");
     ExchangeRate* rate = new ExchangeRate("130.52");
-    Currency* dstCurrency = new Dollar( "0" );
+    Currency* dstCurrency = new Dollar( "10.00" );
     Currency* result = sut->exchange( dstCurrency, rate );
     EXPECT_EQ(result->value(), 13053.31);
     delete dstCurrency;
@@ -109,4 +104,9 @@ TEST_F(DollarTest, testCreateDollarInstance_BigValue_exceptionMessage)
         std::string exceptionMessage( e.what() );
         EXPECT_EQ( exceptionMessage, "initialAoumt must be less than 1,000,000,000,000.");
     }
+}
+
+TEST_F(DollarTest, testCreateDollarInstance_withInvalidCharacter_throwException)
+{
+    EXPECT_THROW( new Dollar("$1000.01"), std::invalid_argument );
 }

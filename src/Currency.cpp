@@ -3,6 +3,7 @@
 @brief      
 @attention  なし
 --------------------------------------------------*/
+#include <regex>
 #include "Currency.h"
 #include "ExchangeRate.h"
 
@@ -21,9 +22,15 @@ Currency::Currency( const std::string initialAmount, std::string currencyName ) 
     if( initialAmount.find(",") != std::string::npos ) {
         throw std::invalid_argument( "initialAmount must not include comma." );
     }
-    if( amount_ < 0 ) {
+
+    if( !initialAmount.find_first_of('-') ) {
         throw std::invalid_argument( "initialAoumt must be positive value." );
+    }    
+    std::regex currencyPattern( "-?\\d+(.\\d{0,4})?" );
+    if( !std::regex_match(initialAmount, currencyPattern) ) {
+        throw std::invalid_argument( "" );
     }
+
 }
 
 /*!------------------------------------------------
