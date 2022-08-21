@@ -78,3 +78,24 @@ TEST_F(DollarTest, testEmpty)
 {
     EXPECT_THROW( new Dollar(""), std::invalid_argument );
 }
+
+TEST_F(DollarTest, testCreateDollarInstance_withComma)
+{
+    EXPECT_THROW( new Dollar("1,000.01"), std::invalid_argument );
+}
+
+TEST_F(DollarTest, testCreateDollarInstance_BigValue_ThorowException)
+{
+    EXPECT_THROW( new Dollar("1000000000000.01"), std::out_of_range );
+}
+
+TEST_F(DollarTest, testCreateDollarInstance_BigValue__exceptionMessage)
+{
+    try {
+        sut = new Dollar("1000000000000.01");
+    }
+    catch( const std::out_of_range& e ) {
+        std::string exceptionMessage( e.what() );
+        EXPECT_EQ( exceptionMessage, "initialAoumt must be less than 1,000,000,000,000.");
+    }
+}
